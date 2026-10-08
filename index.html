@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DXX Market</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="container nav-wrap">
+          <div class="brand-wrap">
+            <div class="brand-logo">D</div>
+            <div>
+              <div class="brand-name">DXX Market</div>
+            </div>
+          </div>
+
+          <nav class="main-nav">
+            <a href="#store">Mahsulotlar</a>
+            <a href="#offers">Aksiyalar</a>
+            <a href="#about">Biz haqimizda</a>
+          </nav>
+
+          <div class="user-actions">
+            <button id="showLoginBtn" class="ghost-btn">Kirish</button>
+            <button id="logoutBtn" class="danger-btn hidden">Chiqish</button>
+            <button id="adminBtn" class="admin-btn hidden">Admin</button>
+            <div class="cart-box">
+              <span>🛒</span>
+              <span id="cartCount">0</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="page-body">
+        <section class="hero">
+          <div class="container hero-grid">
+            <div class="hero-text">
+              <span class="tag">DXX Market</span>
+              <h1>Mahsulotlar endi uyingizga tez yetib boradi.</h1>
+              <p>
+                Elektronika, kiyim-kechak, uy jihozlari, kosmetika va oziq-ovqatlar
+                — barchasi bir yerda. Buyurtma qilganingizdan keyin to'lov ma'lumoti
+                admin panelga kiradi.
+              </p>
+              <div class="hero-actions">
+                <button class="primary-btn" onclick="document.getElementById('store').scrollIntoView({behavior:'smooth'})">Katalog</button>
+                <button class="secondary-btn" id="openRegisterBtn">Ro'yxatdan o'tish</button>
+              </div>
+            </div>
+
+            <div class="hero-card">
+              <div class="hero-card-head">
+                <span>🔥 Bugungi aksiya</span>
+                <strong>30% chegirma</strong>
+              </div>
+              <div class="promo-product">
+                <div class="promo-image">🎧</div>
+                <div>
+                  <h3>AirPods Pro</h3>
+                  <div class="promo-price">1 799 000 so'm</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="auth-section container">
+          <div id="authPanel" class="auth-panel">
+            <div class="auth-tabs">
+              <button class="tab-btn active" data-tab="loginTab">Kirish</button>
+              <button class="tab-btn" data-tab="registerTab">Ro'yxatdan o'tish</button>
+              <button class="tab-btn" data-tab="adminTab">Admin</button>
+            </div>
+
+            <div id="loginTab" class="tab-content active">
+              <form id="loginForm" class="form-box">
+                <h2>Kirish</h2>
+                <label>
+                  Email
+                  <input type="email" id="loginEmail" placeholder="example@mail.com" required />
+                </label>
+                <label>
+                  Parol
+                  <input type="password" id="loginPassword" placeholder="Parolingiz" required />
+                </label>
+                <button type="submit" class="primary-btn full-width">Kirish</button>
+              </form>
+            </div>
+
+            <div id="registerTab" class="tab-content">
+              <form id="registerForm" class="form-box">
+                <h2>Ro'yxatdan o'tish</h2>
+                <label>
+                  Ism
+                  <input type="text" id="registerName" placeholder="Ismingiz" required />
+                </label>
+                <label>
+                  Email
+                  <input type="email" id="registerEmail" placeholder="example@mail.com" required />
+                </label>
+                <label>
+                  Parol
+                  <input type="password" id="registerPassword" placeholder="Yangi parol" required />
+                </label>
+                <button type="submit" class="primary-btn full-width">Ro'yxatdan o'tish</button>
+              </form>
+            </div>
+
+            <div id="adminTab" class="tab-content">
+              <form id="adminLoginForm" class="form-box">
+                <h2>Admin kirish</h2>
+                <label>
+                  Admin ismi
+                  <input type="text" id="adminUser" value="DXX" required />
+                </label>
+                <label>
+                  Admin paroli
+                  <input type="password" id="adminPass" value="DXX" required />
+                </label>
+                <button type="submit" class="primary-btn full-width">Admin kirish</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <section id="store" class="container store-section">
+          <div class="section-head">
+            <div>
+              <span class="mini-label">Katalog</span>
+              <h2>Mahsulotlar</h2>
+            </div>
+          </div>
+
+          <div id="productList" class="product-grid"></div>
+        </section>
+
+        <section id="offers" class="container offer-strip">
+          <div class="offer-card">
+            <h3>Yangi yil axboroti</h3>
+            <p>Har bir 2-to'lovda 1 ta bonus mahsulot.</p>
+          </div>
+          <div class="offer-card">
+            <h3>24/7 yetkazib berish</h3>
+            <p>Tezkor yetkazib berish uchun tayyormiz.</p>
+          </div>
+        </section>
+
+        <section id="about" class="container info-section">
+          <div class="about-card">
+            <h3>DXX Market nima?</h3>
+            <p>
+              DXX Market - qulay va tez onlayn savat bo'lib, foydalanuvchilar mahsulotlarni
+              tanlab, karta orqali to'laydi va buyurtmasi admin paneliga keladi.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <aside id="cartPanel" class="cart-panel hidden">
+        <div class="panel-header">
+          <h3>Savat</h3>
+          <button id="closeCartBtn" class="icon-btn">✕</button>
+        </div>
+
+        <div id="cartItems" class="cart-items"></div>
+
+        <div class="cart-summary">
+          <div class="summary-row">
+            <span>Jami:</span>
+            <strong id="cartTotal">0 so'm</strong>
+          </div>
+          <button id="checkoutBtn" class="primary-btn full-width">Buyurtma berish</button>
+        </div>
+      </aside>
+
+      <div id="checkoutModal" class="modal hidden">
+        <div class="modal-card">
+          <div class="panel-header">
+            <h3>To'lov</h3>
+            <button id="closeCheckoutBtn" class="icon-btn">✕</button>
+          </div>
+
+          <form id="checkoutForm" class="checkout-form">
+            <label>
+              Karta egasi
+              <input type="text" id="cardName" placeholder="Ism familiya" required />
+            </label>
+            <label>
+              Karta raqami
+              <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required />
+            </label>
+            <div class="split-row">
+              <label>
+                Oy / yil
+                <input type="text" id="cardDate" placeholder="MM/YY" maxlength="5" required />
+              </label>
+              <label>
+                CVV
+                <input type="password" id="cardCode" placeholder="***" maxlength="4" required />
+              </label>
+            </div>
+            <button type="submit" class="primary-btn full-width">To'lov qilish</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="adminPage" class="admin-page hidden">
+        <div class="container admin-wrap">
+          <div class="admin-header">
+            <h2>Admin panel</h2>
+            <button id="adminLogoutBtn" class="danger-btn">Chiqish</button>
+          </div>
+
+          <div class="dashboard-grid">
+            <section class="admin-panel-box">
+              <h3>Foydalanuvchilar</h3>
+              <div id="userList" class="list-box"></div>
+            </section>
+
+            <section class="admin-panel-box">
+              <h3>Buyurtmalar</h3>
+              <div id="orderList" class="list-box list-scroll"></div>
+            </section>
+          </div>
+
+          <section class="admin-panel-box product-manager-box">
+            <h3>Mahsulot qo'shish</h3>
+            <form id="productForm" class="product-form">
+              <div class="split-row">
+                <label>
+                  Mahsulot nomi
+                  <input type="text" id="productName" required />
+                </label>
+                <label>
+                  Narx (so'm)
+                  <input type="number" id="productPrice" min="1" required />
+                </label>
+              </div>
+              <div class="split-row">
+                <label>
+                  Kategoriya
+                  <input type="text" id="productCategory" required />
+                </label>
+                <label>
+                  Emoji
+                  <input type="text" id="productEmoji" maxlength="2" placeholder="🎧" required />
+                </label>
+              </div>
+              <label>
+                Tavsif
+                <textarea id="productDescription" rows="3" required></textarea>
+              </label>
+              <button type="submit" class="primary-btn">Qo'shish</button>
+            </form>
+
+            <div class="admin-products">
+              <h4>Mavjud mahsulotlar</h4>
+              <div id="adminProductList" class="admin-product-list"></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+
